@@ -1,0 +1,25 @@
+{
+	"name": "server-web",
+	"json_class": "Chef::Role",
+	"description": "Role for web servers",
+	"chef_type": "role",
+
+	"default_attributes": {},
+	"override_attributes": {},
+	"run_list": [
+		"recipe[apache2]",
+		"recipe[apache2::mod_php5]",
+		"recipe[apache2::mod_rewrite]",
+		"recipe[apache2::mod_ssl]",
+
+		"recipe[php]",
+		"recipe[php::module_apc]",
+		"recipe[php::module_curl]",
+		"recipe[php::module_gd]",
+		"recipe[php::module_memcache]",
+		"recipe[php::module_mysql]",
+		"recipe[php::module_sqlite3]",
+
+		"recipe[dev-vm::web_apps]"
+	]
+}
