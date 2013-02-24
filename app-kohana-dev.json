@@ -16,6 +16,14 @@
 			"group": "vagrant"
 		},
 		"vm": {
+			"bashrc": {
+				"envs": {
+					"APP_ENV": "development"
+				},
+				"paths": [
+					"/home/vagrant/bin"
+				]
+			},
 			"web_apps": [{
 					"server_name": "dev.vm",
 					"server_aliases": ["33.33.33.10"],
@@ -30,6 +38,9 @@
 		"role[server-default]",
 		"role[server-web]",
 		"role[server-mysql]",
-		"role[server-memcached]"
+		"role[server-memcached]",
+
+		"recipe[dev-vm::composer]",
+		"recipe[dev-vm::bashrc]"
 	]
 }
