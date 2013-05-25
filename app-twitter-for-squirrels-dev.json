@@ -1,0 +1,46 @@
+{
+	"name": "app-twitter-for-squirrels-dev",
+	"json_class": "Chef::Role",
+	"description": "Role for Twitter for Squirrels development",
+	"chef_type": "role",
+
+	"default_attributes": {},
+	"override_attributes": {
+		"mysql": {
+			"server_root_password": "root",
+			"server_repl_password": "root",
+			"server_debian_password": "root"
+		},
+		"apache": {
+			"user": "vagrant",
+			"group": "vagrant"
+		},
+		"vm": {
+			"bashrc": {
+				"envs": {
+					"APP_ENV": "development"
+				},
+				"paths": [
+					"/home/vagrant/bin"
+				]
+			},
+			"web_apps": [{
+					"server_name": "dev.vm",
+					"server_aliases": ["33.33.33.10"],
+					"docroot": "/home/vagrant/app/httpdocs",
+					"app_environment": "development",
+					"enable_ssl": false,
+					"aliases": []
+			}]
+		}
+	},
+	"run_list": [
+		"role[server-default]",
+		"role[server-web]",
+		"role[server-mysql]",
+		"role[server-memcached]",
+
+		"recipe[dev-vm::composer]",
+		"recipe[dev-vm::bashrc]"
+	]
+}
