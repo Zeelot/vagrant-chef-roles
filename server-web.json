@@ -20,6 +20,7 @@
 		"recipe[php::module_mysql]",
 		"recipe[php::module_sqlite3]",
 
+		"recipe[dev-vm::php_memcached]",
 		"recipe[dev-vm::web_apps]"
 	]
 }
