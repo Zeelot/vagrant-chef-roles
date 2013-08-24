@@ -9,7 +9,8 @@
 		"mysql": {
 			"server_root_password": "root",
 			"server_repl_password": "root",
-			"server_debian_password": "root"
+			"server_debian_password": "root",
+			"bind_address": "0.0.0.0"
 		},
 		"apache": {
 			"user": "vagrant",
@@ -31,7 +32,14 @@
 					"app_environment": "development",
 					"enable_ssl": false,
 					"aliases": []
-			}]
+			}],
+			"mysql": {
+				"databases": ["web_app"],
+				"users": [{
+					"username": "vagrant",
+					"password": "vagrant"
+				}]
+			}
 		}
 	},
 	"run_list": [
