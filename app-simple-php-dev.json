@@ -1,0 +1,27 @@
+{
+	"name": "app-simple-php-dev",
+	"json_class": "Chef::Role",
+	"description": "Role for simple php apps development",
+	"chef_type": "role",
+
+	"default_attributes": {},
+	"override_attributes": {
+		"apache": {
+			"user": "vagrant",
+			"group": "vagrant"
+		},
+		"vm": {
+			"web_apps": [{
+					"server_name": "localhost",
+					"server_aliases": ["dev.vm"],
+					"docroot": "/home/vagrant/app",
+					"app_environment": "development",
+					"enable_ssl": false
+			}]
+		}
+	},
+	"run_list": [
+		"role[server-default]",
+		"role[server-web]"
+	]
+}
