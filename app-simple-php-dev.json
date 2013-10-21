@@ -11,6 +11,11 @@
 			"group": "vagrant"
 		},
 		"vm": {
+			"bashrc": {
+				"paths": [
+					"/home/vagrant/bin"
+				]
+			},
 			"web_apps": [{
 					"server_name": "localhost",
 					"server_aliases": ["dev.vm"],
@@ -22,6 +27,7 @@
 	},
 	"run_list": [
 		"role[server-default]",
-		"role[server-web]"
+		"role[server-web]",
+		"recipe[dev-vm::composer]"
 	]
 }
